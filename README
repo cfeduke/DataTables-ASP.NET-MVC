@@ -1,0 +1,6 @@
+This projects supplies C# classes for ASP.NET MVC if JQuery DataTables is used as data grid component
+and server side processing is enabled.
+
+The projects comes with a DataTables model binder, to have a convinient C# data structure to bind the
+DataTables server request and a DataTableResult to generate the neccesary JSON data strucuture needed by
+DataTables as result.
