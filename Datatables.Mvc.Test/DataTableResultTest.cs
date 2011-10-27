@@ -73,13 +73,18 @@ namespace jquery.dataTables.Test {
         public void ExecuteResult_Ok() {
             //Arrange
             var data = new List<List<string>>() {
-                new List<string> { "hallo" }
+                new List<string> { "hallo", "österreich" }
             };
 
             var httpRequest = new Mock<HttpRequestBase>();
             httpRequest.Setup(h => h.HttpMethod)
                        .Returns("POST");
-            var httpResponse = new Mock<HttpResponseBase>();            
+            var httpResponse = new Mock<HttpResponseBase>();
+            httpResponse.Setup(x => x.ContentEncoding)
+                        .Returns(Encoding.UTF8);
+            string result = string.Empty;
+            httpResponse.Setup(x => x.Write(It.IsAny<string>()))
+                        .Callback((string s) => result = s);
             var httpContext = new Mock<HttpContextBase>();
             httpContext.Setup(h => h.Request)
                        .Returns(httpRequest.Object);
@@ -91,8 +96,7 @@ namespace jquery.dataTables.Test {
                 HttpContext = httpContext.Object
             });                        
             //Assert
-            Assert.IsTrue(true);
-
+            Assert.AreEqual(@"{""aaData"":[[""hallo"",""österreich""]],""iTotalDisplayRecords"":10,""iTotalRecords"":10,""sColumns"":null}", result);            
         }
     }
 }
