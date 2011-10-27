@@ -1,0 +1,9 @@
+C:\Users\Johannes\Documents\Git\DataTables-ASP.NET-MVC\Mvc3Application.AppSpike\bin\Mvc3Application.AppSpike.dll
+C:\Users\Johannes\Documents\Git\DataTables-ASP.NET-MVC\Mvc3Application.AppSpike\bin\Mvc3Application.AppSpike.pdb
+C:\Users\Johannes\Documents\Git\DataTables-ASP.NET-MVC\Mvc3Application.AppSpike\bin\EntityFramework.dll
+C:\Users\Johannes\Documents\Git\DataTables-ASP.NET-MVC\Mvc3Application.AppSpike\bin\EntityFramework.xml
+C:\Users\Johannes\Documents\Git\DataTables-ASP.NET-MVC\Mvc3Application.AppSpike\obj\Debug\ResolveAssemblyReference.cache
+C:\Users\Johannes\Documents\Git\DataTables-ASP.NET-MVC\Mvc3Application.AppSpike\obj\Debug\Mvc3Application.AppSpike.dll
+C:\Users\Johannes\Documents\Git\DataTables-ASP.NET-MVC\Mvc3Application.AppSpike\obj\Debug\Mvc3Application.AppSpike.pdb
+C:\Users\Johannes\Documents\Git\DataTables-ASP.NET-MVC\Mvc3Application.AppSpike\bin\Datatables.Mvc.dll
+C:\Users\Johannes\Documents\Git\DataTables-ASP.NET-MVC\Mvc3Application.AppSpike\bin\Datatables.Mvc.pdb

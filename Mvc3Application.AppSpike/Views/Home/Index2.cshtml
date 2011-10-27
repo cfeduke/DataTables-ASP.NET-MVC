@@ -1,0 +1,52 @@
+﻿@{
+    ViewBag.Title = "Home Page 2";
+}
+
+<h2>@ViewBag.Message</h2>
+<p>
+    To learn more about ASP.NET MVC visit <a href="http://asp.net/mvc" title="ASP.NET MVC Website">http://asp.net/mvc</a>.
+</p>
+
+<script type="text/javascript">
+    $(document).ready(function () {
+        //http://www.datatables.net
+        $('#userTable').dataTable({
+            "sDom": "rt",
+            "bJQueryUI": true,
+            "sPaginationType": "full_numbers",
+            "bProcessing": true,
+            "bServerSide": true,
+            "sAjaxSource": "/Home/GetDataTables2",
+            "fnServerData": function (url, data, callback) {
+                $.ajax({
+                    "url": url,
+                    "data": data,
+                    "success": callback,
+                    "contentType": "application/x-www-form-urlencoded; charset=utf-8",
+                    "dataType": "json",
+                    "type": "POST",
+                    "cache": false,
+                    "error": function () {
+                        alert("DataTables warning: JSON data from server failed to load or be parsed. " +
+                        "This is most likely to be caused by a JSON formatting error.");
+                    }
+                });
+            },
+            "aoColumns": [
+                { "bSortable": true },
+                { "bSortable": true }
+            ]
+        });
+    });                    
+</script>
+
+<table id="userTable" width="100%">
+    <thead>
+        <tr>
+            <th>Number</th>
+            <th>Text</th>
+        </tr>
+    </thead>
+    <tbody></tbody>
+    <tfoot></tfoot>
+</table>
