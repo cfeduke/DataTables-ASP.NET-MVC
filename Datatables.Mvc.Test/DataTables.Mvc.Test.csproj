@@ -57,7 +57,7 @@
     <Compile Include="DataTableResultTest.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\jquery.dataTables\Datatables.Mvc.csproj">
+    <ProjectReference Include="..\Datatables.Mvc\Datatables.Mvc.csproj">
       <Project>{CFCB100E-9779-488C-8F24-ACAAF3B59D60}</Project>
       <Name>Datatables.Mvc</Name>
     </ProjectReference>
