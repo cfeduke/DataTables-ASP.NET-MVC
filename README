@@ -1,3 +1,14 @@
+##This Fork##
+Uses json.net for serialization so DT_RowId and DT_RowClass can be used (a dictionary was required).
+
+##How to Use (Properly)##
+
+In Global.asax.cs during Application_Start:
+
+    ModelBinders.Binders.Add(typeof(DataTable), new DataTableModelBinder());
+
+##Original README##
+
 This projects supplies C# classes for ASP.NET MVC 3 if jQuery DataTables is used as a data grid component and server side processing is enabled.
 
 The projects comes with a DataTables model binder, to have a convenient C# data structure to bind the DataTables server request and a DataTableResult to generate the neccesary JSON data strucuture needed by DataTables as result.
