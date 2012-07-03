@@ -1,6 +1,8 @@
 ##This Fork##
 Uses json.net for serialization so DT_RowId and DT_RowClass can be used (a dictionary was required).
 
+Adds a property getter/setter and binds DataTable.aoData.  This dictionary contains all other key value pairs that are not specially handled; meaning you can retreive any key value pairs added to aoData via the fnServerParams (see [http://datatables.net/release-datatables/examples/server_side/custom_vars.html])
+
 ##How to Use (Properly)##
 
 In Global.asax.cs during Application_Start:

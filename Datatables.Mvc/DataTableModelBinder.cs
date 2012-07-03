@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Web.Mvc;
 
 namespace Datatables.Mvc {
@@ -11,11 +12,32 @@ namespace Datatables.Mvc {
     public class DataTableModelBinder : IModelBinder {
         #region IModelBinder Members
 
+		private static readonly IDictionary<string,bool> KnownFormParameters = new Dictionary<string,bool> { 
+			{ "sEcho", true },
+			{ "iDisplayStart", true },
+			{ "iDisplayLength", true },
+			{ "iColumns", true },
+			{ "sColumns", true },
+			{ "sSearch", true },
+			{ "bEscapeRegex", true },
+			{ "bSortable_", true },
+			{ "bSearchable_", true },
+			{ "sSearch_", true },
+			{ "bEscapeRegex_", true },
+			{ "iSortingCols", true },
+			{ "iSortCol", true },
+			{ "iSortCol_", true },
+			{ "sSortDir_", true },
+			// not used in BindModel
+			{ "mDataProp_", true },
+			{ "bRegex", true },
+			{ "bRegex_", true }
+		};
+
         public object BindModel(ControllerContext controllerContext, ModelBindingContext bindingContext) {
             if (controllerContext == null) {
                 throw new ArgumentNullException("controllerContext");
             }
-
 
             if (bindingContext == null) {
                 throw new ArgumentNullException("bindingContext");
@@ -109,6 +131,24 @@ namespace Datatables.Mvc {
                     dataTable.sSortDirs.Add(DataTableSortDirection.Descending);
                 }
             }
+
+			// get all the other not well known parameters - these can be defined by the programmer
+			// http://datatables.net/release-datatables/examples/server_side/custom_vars.html
+			foreach (var key in controllerContext.HttpContext.Request.Form.AllKeys)
+			{
+				var shortKey = key;
+				var underscorePos = shortKey.IndexOf('_');
+				if (underscorePos > 0) // -1 is for existance but starting with an _ is also not a shortened key
+				{
+					shortKey = shortKey.Substring(0, underscorePos + 1);
+				}
+				if (KnownFormParameters.ContainsKey(shortKey))
+				{
+					continue;
+				}
+				dataTable.aoData.Add(key, controllerContext.HttpContext.Request.Form[key]);
+			}
+
 
             return dataTable;
         }

@@ -17,6 +17,7 @@ namespace Datatables.Mvc {
             bEscapeRegexs = new List<bool>();
             iSortCols = new List<int>();
             sSortDirs = new List<DataTableSortDirection>();
+        	aoData = new Dictionary<string,string>();
         }
 
         /// <summary>
@@ -71,6 +72,11 @@ namespace Datatables.Mvc {
         /// Direction to be sorted - "desc" or "asc". Note that the prefix for this variable is wrong in 1.5.x where iSortDir_(int) was used)
         /// </summary>
         public IList<DataTableSortDirection> sSortDirs { get; set; }
+		/// <summary>
+		/// Gets or sets the array of object data (in string representation) as passed to the server in the request excluding any well known datatables.net keys.
+		/// </summary>
+		/// <remarks>Any custom keys added through fnServerParams can be found in this dictionary.</remarks>
+		public IDictionary<string, string> aoData { get; set; }
     }
 
     /// <summary>
